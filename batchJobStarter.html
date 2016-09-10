@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="batchJobApp">
+<head>
+    <meta charset="UTF-8">
+    <title>BatchJobStarter</title>
+    <script src="External/jquery/jquery-1.11.3.min.js"></script>
+    <script src="External/Angularjs/angular.min.js"></script>
+    <script src="batchJobStarter.js"></script>
+    <link rel="stylesheet" href="External/bulma-0.1.0/css/bulma.css"></link>
+</head>
+<body ng-controller="batchJobController">
+  <section class="section">
+    <div class="columns">
+      <div ng-repeat="d in batchData" class="column is-half">
+      	<div class="box">
+  	      <div class="content">
+  	          <h2 class="title">{{d.name}}<h2>
+              <h4 class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</h4>
+              <p>
+                前回処理時間:{{d.lastBatchJobTime}}<br>
+                最終処理時刻:{{d.lastBatchJobDt}}
+              </p>
+            <h4>ExecuteStatus</h4>
+            <div class="columns">
+              <div class="column">
+                <div class="notification is-half">実行中</div>
+              </div>
+              <div class="column">
+                <p class="control" style="text-align: right;">
+                  <a class="button is-large">Button</a>
+                </p>
+              </div>
+            </div>
+  	      </div>
+      	</div>
+        <br>
+      </div>
+  </div>
+  </section>
+</body>
