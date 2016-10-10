@@ -5,8 +5,15 @@
     <title>BatchJobStarter</title>
     <script src="External/jquery/jquery-1.11.3.min.js"></script>
     <script src="External/Angularjs/angular.min.js"></script>
-    <script src="batchJobStarter.js"></script>
+    <script src="External/Angularjs/angular-resource.min.js"></script>
+    <script src="External/Angularjs/angular-route.min.js"></script>
+    <!-- <script src="batchJobStarter.js"></script> -->
     <link rel="stylesheet" href="External/bulma-0.1.0/css/bulma.css"></link>
+
+    <script src="scripts/routeProvider.js"></script>
+    <script src="scripts/controllers/batchJobStart.js"></script>
+    <script src="scripts/services/batchJobApi.js"></script>
+
 </head>
 <body ng-controller="batchJobController">
   <section class="section">
@@ -14,16 +21,16 @@
       <div ng-repeat="d in batchData" class="column is-half">
       	<div class="box">
   	      <div class="content">
-  	          <h2 class="title">{{d.name}}<h2>
-              <h4 class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.</h4>
+  	          <h2 class="title">{{d.exec_nm}}<h2>
+              <h4 class="subtitle">{{d.discription}}</h4>
               <p>
-                前回処理時間:{{d.lastBatchJobTime}}<br>
-                最終処理時刻:{{d.lastBatchJobDt}}
+                前回処理時間:{{d.last_batch_job_time}}<br>
+                最終処理時刻:{{d.last_batch_job_dt}}
               </p>
             <h4>ExecuteStatus</h4>
             <div class="columns">
               <div class="column">
-                <div class="notification is-half">実行中</div>
+                <div ng-class="isNowExec(d.exec_status)?['notification','is-half','is-warning']:['notification','is-half','is-info']">{{$index}}</div>
               </div>
               <div class="column">
                 <p class="control" style="text-align: right;">
